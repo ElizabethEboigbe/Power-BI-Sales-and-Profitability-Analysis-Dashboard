@@ -35,7 +35,7 @@ The analysis was conducted to:
 The company lacked consolidated visibility into its overall sales performance, profitability, and cost structure across products, countries, and time periods. Raw data files were fragmented, making it difficult for management to identify high- and low-performing markets, understand how expenses such as transportation, rent, and tax impact total costs, or detect regions and products operating at a loss.
 ---
 
-**Data Used**
+## Data Used
 - <a href="https://github.com/ElizabethEboigbe/Power-BI-Sales-and-Profitability-Analysis-Dashboard/blob/main/Power%20BI%20Sales%20and%20Profitability%20Analysis.pbix">Dataset</a>
 ---
 ## Dataset Description
@@ -103,6 +103,7 @@ sum(Transactions_Data[Total Sales with 5% discounts]) + sum(Transactions_Data[To
 
 
 ## Key Questions Answered
+
 Which month recorded the highest purchase?
 
 What is the cost and the total purchase amount?
@@ -132,6 +133,7 @@ How effective is the 5% discount strategy in driving revenue compared to sales w
  
 
 ## Analysis & Visualizations — Answers and Visuals
+
 **Which month recorded the highest purchase?**
 
 Answer: January recorded the highest total purchase: 34,290
@@ -218,13 +220,13 @@ Answer: Prioritize Saudi Arabia, Sweden, Tuvalu, Kiribati, and Sierra Leone for 
 Answer: The 5% discount increased sales volume but reduced margins; sales without discount produce stronger profitability. The discount performs as a volume lever but should be applied selectively.
 
 
-**Insights & Findings**
+## Insights & Findings
 
 The analysis revealed year-over-year sales growth of 16.6% (162,822 → 189,817) with improved profitability as revenue growth outpaced costs. Performance varies by market: Saudi Arabia and Sweden are strong performers while Niger and several other smaller markets operate at a loss. Purchasing costs dominate the cost structure (>80%), with transportation, rent and tax contributing modest shares. Seasonality is apparent — January and December are peak months while April shows dips that disproportionately reduce margins. The 5% discount increases volume but erodes margins, suggesting a selective discount approach. A small set of products and markets drive the majority of revenue and profit.
 
-**Conclusion & Recommendations**
+## Conclusion & Recommendations
 The company shows steady growth and improved profitability, but performance is uneven across regions and products. To sustain growth, focus efforts on profitable markets and top-performing products, address loss-making regions with corrective strategies, and target purchasing cost reductions. Use discounts selectively and promote payment modes that correlate with stronger sales.
 
-**Dashboard**
+## Dashboard
 
 <img width="940" height="480" alt="Screenshot 2025-09-08 231809" src="https://github.com/user-attachments/assets/6d051635-6f27-410d-81d5-68b2814dd004" />
