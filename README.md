@@ -98,12 +98,11 @@ Profit =
 [Total_Sales] - [Total_Cost] 
 
 Revenue =
-sum(Transactions_Data[Total Sales with 5% discounts]) + sum(Transactions_Data[Total sales without discount]) 
+sum(Transactions_Data[Total Sales with 5% discounts]) + sum(Transactions_Data[Total sales without discount])
+```
 
 
 ## Key Questions Answered
-This project addresses the following business questions:
-
 Which month recorded the highest purchase?
 
 What is the cost and the total purchase amount?
@@ -112,7 +111,7 @@ Which month recorded the lowest purchase?
 
 What is the cost and total purchase amount for the lowest month?
 
-What are the company’s Total Sales (with and without the 5% discount), Revenue, and Profit?
+What are the company’s Total Sales (with and without the discount), Revenue, and Profit?
 
 What share of the company’s cost structure is made up of Purchasing Cost, Transportation, Rent, and Tax?
 
@@ -129,11 +128,11 @@ Are there months or regions where expenses significantly reduce profitability?
 Based on the analysis, which countries or regions should management prioritize for growth, and which require corrective action?
 
 How effective is the 5% discount strategy in driving revenue compared to sales without discount?
+ 
+ 
 
-Analysis & Visualizations — Answers and Visuals
-(Each answer is paired with the recommended chart and screenshot placeholder)
-
-Which month recorded the highest purchase?
+## Analysis & Visualizations — Answers and Visuals
+**Which month recorded the highest purchase?**
 Answer: January recorded the highest total purchase: 34,290
 Visual: Stacked Column Chart — Total Purchase by Month
 Screenshot: screenshots/highest_purchase_jan.png
