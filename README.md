@@ -36,7 +36,7 @@ The company lacked consolidated visibility into its overall sales performance, p
 ---
 
 **Data Used**
-
+- <a href="https://github.com/ElizabethEboigbe/Power-BI-Sales-and-Profitability-Analysis-Dashboard/blob/main/Power%20BI%20Sales%20and%20Profitability%20Analysis.pbix">Dashboard</a>
 ---
 ## Dataset Description
  - **Transactions_data** – Transaction-level records.  
