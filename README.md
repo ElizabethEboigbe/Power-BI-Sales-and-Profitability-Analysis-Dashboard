@@ -135,8 +135,8 @@ How effective is the 5% discount strategy in driving revenue compared to sales w
 **Which month recorded the highest purchase?**
 
 Answer: January recorded the highest total purchase: 34,290
-Visual: Stacked Column Chart — Total Purchase by Month
-Screenshot: screenshots/highest_purchase_jan.png
+
+<img width="895" height="426" alt="Screenshot 2025-09-09 013116" src="https://github.com/user-attachments/assets/050fe31a-3587-49b6-8283-b3a43e1ce468" />
 
 What is the cost and the total purchase amount?
 Answer (January):
