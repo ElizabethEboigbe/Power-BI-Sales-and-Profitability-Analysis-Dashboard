@@ -51,15 +51,14 @@ The company lacked consolidated visibility into its overall sales performance, p
 ---
 
 ## Data Cleaning, Preparation & Transformation
-The raw datasets (Transactions, Products, and Country) were cleaned and transformed in Power Query to make them ready for analysis. 
-- uploaded the files into power query editor. 
+The raw datasets (Transactions, Products, and Country) were cleaned and transformed in Power Query to make them ready for analysis.  
 - Standardized data types for dates, numeric values and text.  
 - Derived date fields from the Date column: Day, Week of Month, Month Number, Month Name and Year.
 - Formated month name to 3 character (e.g., jan, feb)  
 - Merged Product_data into Transactions_data using product ID.  
 - Renamed the imported country table to Country_data for clarity and consistency.  
 - Handled nulls and removed duplicates where appropriate.
-- Uploaded to desktop  
+ 
 
  
 ---
