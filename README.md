@@ -35,36 +35,33 @@ The analysis was conducted to:
 ---
 
 ## Problem Statement
-The company lacked consolidated visibility into sales performance, profitability and cost drivers across products, countries and periods. Raw files were fragmented, making it difficult to answer questions such as which months and countries generate the highest or lowest purchases and profit, how transportation/rent/tax affect total cost, and which regions or products run at a loss.
-
+The company lacked consolidated visibility into its overall sales performance, profitability, and cost structure across products, countries, and time periods. Raw data files were fragmented, making it difficult for management to identify high- and low-performing markets, understand how expenses such as transportation, rent, and tax impact total costs, or detect regions and products operating at a loss.
 ---
 
 ## Dataset Description
-**Tables used**
-
-- **Transactions_data** – Transaction-level records.  
+ - **Transactions_data** – Transaction-level records.  
   *Key fields*: Date, product_id, Quantity, Transportation, Rent, Tax, Payment Mode, Sales Type, Country (or country_id).  
 
 - **Product_data** – Product dimension.  
   *Key fields*: id, Selling price, Purchasing price.  
 
-- **Country_data** – Country dimension (renamed from Table1).  
+- **Country_data** – Country dimension.  
 
-Data covers multiple months across 2021 and 2022 enabling YoY comparisons.
 
 ---
 
 ## Data Cleaning, Preparation & Transformation
-The raw datasets (Transactions, Products, and Country) were cleaned and transformed in Power Query to make them analysis-ready. Key transformation steps included:
-
+The raw datasets (Transactions, Products, and Country) were cleaned and transformed in Power Query to make them ready for analysis. 
+- uploaded the files into power query editor. 
 - Standardized data types for dates, numeric values and text.  
-- Derived date fields from the Date column: Day, Week of Month, Month Number, Month Name (3-character format, e.g., Jan), and Year.  
-- Merged Product_data into Transactions_data using product ID (bringing in Selling and Purchasing prices).  
+- Derived date fields from the Date column: Day, Week of Month, Month Number, Month Name and Year.
+- Formated month name to 3 character (e.g., jan, feb)  
+- Merged Product_data into Transactions_data using product ID.  
 - Renamed the imported country table to Country_data for clarity and consistency.  
-- Handled nulls and removed duplicates where appropriate.  
+- Handled nulls and removed duplicates where appropriate.
+- Uploaded to desktop  
 
-This preparation produced a clean fact table (Transactions_data) linked to product and country dimensions to support accurate DAX calculations and performant visuals.
-
+ 
 ---
 
 ## Data Modeling
@@ -72,75 +69,39 @@ The model follows a star-like design with Transactions_data as the fact table an
 
 **Key relationships**
 
-- Product_data[id] → Transactions_data[product_id] — One : Many  
-- Country_data[country_id] → Transactions_data[country_id] — One : Many (or One:One if country keys are unique on both sides)  
-- Date[Date] → Transactions_data[Date] — One : Many (use a Date table for time intelligence)  
-
-Set cross-filter direction to single by default unless bidirectional filtering is specifically required.
+- Product_data → Transactions_data — One : Many
+- Transactions_data to Product_data – many : One
+- Country_data → Transactions_data — One : One  
+  
+ 
 
 ---
 
 ## Calculations (DAX)
+```
+Total Sales with 5% Discount =
+Transactions_data[Quantity] * Transactions_data[Product_Data.Selling price] * 0.95
 
-### Calculated Columns (Row-Level)
-Use calculated columns when you need a row-level value visible in tables or to validate numbers. Two implementation options are shown:  
-(A) if prices were merged into Transactions_data, or  
-(B) if prices remain in Product_data and you use RELATED().
-
-**If prices are merged into Transactions_data:**
-```dax
-Total Sales (5% Discount) =
-Transactions_data[Quantity] * Transactions_data[Selling price] * 0.95
-
-Total Sales (No Discount) =
-Transactions_data[Quantity] * Transactions_data[Selling price]
+Total Sales without Discount =
+Transactions_Data[QUANTITY]*Transactions_Data[Product_Data.SELLING PRICE]
 
 Total Purchase =
-Transactions_data[Quantity] * Transactions_data[Purchasing price]
+Transactions_Data[QUANTITY]*Transactions_Data[Product_Data.PURCHASING PRICE]
 
-Total Expense (Row) =
-COALESCE(Transactions_data[Transportation], 0) +
-COALESCE(Transactions_data[Rent], 0) +
-COALESCE(Transactions_data[Tax], 0)
-If prices are kept in Product_data:
+Total Expense  =
+sum(Transactions_Data[Transportation]) + sum(Transactions_Data[RENT]) + sum(Transactions_Data[TAX])
 
-dax
-Copy code
-Total Sales (5% Discount) =
-Transactions_data[Quantity] * RELATED(Product_data[Selling price]) * 0.95
-(Use RELATED(Product_data[Purchasing price]) for Total Purchase likewise.)
-
-Measures (Aggregations for Cards and Visuals)
-Create measures for KPI aggregation and analysis:
-
-dax
-Copy code
-Revenue =
-SUM(Transactions_data[Total Sales (5% Discount)]) +
-SUM(Transactions_data[Total Sales (No Discount)])
-
-Total Purchase (Measure) =
-SUM(Transactions_data[Total Purchase])
-
-Total Cost =
-SUM(Transactions_data[Total Purchase]) +
-SUM(Transactions_data[Transportation]) +
-SUM(Transactions_data[Rent]) +
-SUM(Transactions_data[Tax])
-
-Total Expense =
-SUM(Transactions_data[Transportation]) +
-SUM(Transactions_data[Rent]) +
-SUM(Transactions_data[Tax])
+Total_Cost =
+sum(Transactions_Data[Product_Data.PURCHASING PRICE]) + sum(Transactions_Data[Transportation]) + sum(Transactions_Data[RENT]) + sum(Transactions_Data[TAX])
 
 Profit =
-[Revenue] - [Total Cost]
+[Total_Sales] - [Total_Cost] 
 
-Profit Margin % =
-DIVIDE([Profit], [Revenue], 0)
-(If you did not materialize row-level columns in Power Query, use SUMX variants instead.)
+Revenue =
+sum(Transactions_Data[Total Sales with 5% discounts]) + sum(Transactions_Data[Total sales without discount]) 
 
-Key Questions Answered
+
+## Key Questions Answered
 This project addresses the following business questions:
 
 Which month recorded the highest purchase?
