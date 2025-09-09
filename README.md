@@ -10,7 +10,7 @@
 - [Data Modeling](#data-modeling)
 - [Calculations (DAX)](#calculations-dax)
 - [Key Questions Answered](#key-questions-answered)
-- [Analysis & Visualizations (Answers + Visuals)](#analysis--visualizations--answers--visuals)
+- [Analysis & Visualizations](#analysis--visualizations)
 - [Insights & Findings](#insights--findings)
 - [Conclusion & Recommendations](#conclusion--recommendations)
 - [Dashboard](#Dashboard)
@@ -132,7 +132,7 @@ How effective is the 5% discount strategy in driving revenue compared to sales w
  
  
 
-## Analysis & Visualizations — Answers and Visuals
+## Analysis & Visualizations  
 
 **Which month recorded the highest purchase?**
 
