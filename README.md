@@ -71,7 +71,10 @@ The model follows a star-like design with Transactions_data as the fact table an
 
 - Product_data → Transactions_data — One : Many
 - Transactions_data to Product_data – many : One
-- Country_data → Transactions_data — One : One  
+- Country_data → Transactions_data — One : One
+
+  <img width="751" height="283" alt="Screenshot 2025-09-09 023251" src="https://github.com/user-attachments/assets/295e4afe-d83f-4f0f-9562-83bab6789a91" />
+
   
  
 
